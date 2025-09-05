@@ -1,0 +1,68 @@
+{
+    "Arts Crafts & Sewing": {
+        "weight_value": 2.9
+    },
+    "Auto & Tires": {
+        "weight_value": 1.0
+    },
+    "Baby": {
+        "weight_value": 2.2
+    },
+    "Beauty": {
+        "weight_value": 0.4
+    },
+    "Clothing": {
+        "weight_value": 4.4
+    },
+    "Collectibles": {
+        "weight_value": 1.1
+    },
+    "Electronics": {
+        "weight_value": 1.0
+    },
+    "Food": {
+        "weight_value": 12.9
+    },
+    "Health and Medicine": {
+        "weight_value": 7.0
+    },
+    "Home": {
+        "weight_value": 7.7
+    },
+    "Home Improvement": {
+        "weight_value": 8.3
+    },
+    "Household Essentials": {
+        "weight_value": 2.3
+    },
+    "Jewelry": {
+        "weight_value": 1.0
+    },
+    "Party & Occasions": {
+        "weight_value": 1.0
+    },
+    "Patio & Garden": {
+        "weight_value": 72.2
+    },
+    "Personal Care": {
+        "weight_value": 1.0
+    },
+    "Pets": {
+        "weight_value": 5.7
+    },
+    "Premium Beauty": {
+        "weight_value": 1.0
+    },
+    "Shop with Purpose": {
+        "weight_value": 1.0
+    },
+    "Sports & Outdoors": {
+        "weight_value": 0.4
+    },
+    "Subscriptions": {
+        "weight_value": 1.0
+    },
+    "Toys": {
+        "weight_value": 2.8
+    }
+}
