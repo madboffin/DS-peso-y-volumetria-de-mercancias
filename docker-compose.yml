@@ -5,10 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: product-predictor
     volumes:
-      # directorio para archivos CSV
+      # Mount data directory to /app/data to match the working directory
       - ./data:/app/data
     environment:
       - DATA_PATH=/app/data
     command: [ "python", "cli/main.py" ]
-    # To override the command for development, use:
-    # command: [ "python", "cli/main.py", "--help" ]
