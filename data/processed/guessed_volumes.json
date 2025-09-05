@@ -1,0 +1,112 @@
+{
+    "Arts Crafts & Sewing": {
+        "size_l": 1.0,
+        "size_w": 1.0,
+        "size_h": 1.0
+    },
+    "Auto & Tires": {
+        "size_l": 1.0,
+        "size_w": 1.0,
+        "size_h": 1.0
+    },
+    "Baby": {
+        "size_l": 8.7,
+        "size_w": 8.3,
+        "size_h": 7.9
+    },
+    "Beauty": {
+        "size_l": 5.0,
+        "size_w": 6.2,
+        "size_h": 12.1
+    },
+    "Clothing": {
+        "size_l": 7.4,
+        "size_w": 6.2,
+        "size_h": 3.6
+    },
+    "Collectibles": {
+        "size_l": 7.0,
+        "size_w": 5.9,
+        "size_h": 1.7
+    },
+    "Electronics": {
+        "size_l": 1.0,
+        "size_w": 2.2,
+        "size_h": 4.8
+    },
+    "Food": {
+        "size_l": 4.1,
+        "size_w": 4.1,
+        "size_h": 5.8
+    },
+    "Health and Medicine": {
+        "size_l": 4.8,
+        "size_w": 6.1,
+        "size_h": 5.2
+    },
+    "Home": {
+        "size_l": 54.0,
+        "size_w": 48.4,
+        "size_h": 7.1
+    },
+    "Home Improvement": {
+        "size_l": 6.3,
+        "size_w": 6.3,
+        "size_h": 6.6
+    },
+    "Household Essentials": {
+        "size_l": 3.2,
+        "size_w": 3.8,
+        "size_h": 6.5
+    },
+    "Jewelry": {
+        "size_l": 1.0,
+        "size_w": 1.0,
+        "size_h": 1.0
+    },
+    "Party & Occasions": {
+        "size_l": 1.0,
+        "size_w": 1.0,
+        "size_h": 1.0
+    },
+    "Patio & Garden": {
+        "size_l": 57.1,
+        "size_w": 37.1,
+        "size_h": 39.8
+    },
+    "Personal Care": {
+        "size_l": 3.5,
+        "size_w": 4.1,
+        "size_h": 4.9
+    },
+    "Pets": {
+        "size_l": 6.0,
+        "size_w": 8.2,
+        "size_h": 9.1
+    },
+    "Premium Beauty": {
+        "size_l": 3.4,
+        "size_w": 3.5,
+        "size_h": 6.1
+    },
+    "Shop with Purpose": {
+        "size_l": 0.7,
+        "size_w": 1.8,
+        "size_h": 6.7
+    },
+    "Sports & Outdoors": {
+        "size_l": 11.2,
+        "size_w": 10.7,
+        "size_h": 5.2
+    },
+    "Subscriptions": {
+        "size_l": 1.0,
+        "size_w": 1.0,
+        "size_h": 1.0
+    },
+    "Toys": {
+        "size_l": 17.5,
+        "size_w": 22.5,
+        "size_h": 2.8
+    }
+}
