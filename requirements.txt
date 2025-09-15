@@ -1,6 +1,5 @@
 google-genai
 pandas
-pyarrow
 python-dotenv
 scikit-learn
 spacy
