@@ -1,47 +1,47 @@
 {
     "Arts Crafts & Sewing":{
-        "weight_value":2.9
+        "weight_kg":0.08
     },
     "Baby":{
-        "weight_value":2.2
+        "weight_kg":1.0
     },
     "Beauty":{
-        "weight_value":0.4
+        "weight_kg":0.01
     },
     "Clothing":{
-        "weight_value":4.4
+        "weight_kg":0.47
     },
     "Collectibles":{
-        "weight_value":1.1
+        "weight_kg":0.5
     },
     "Food":{
-        "weight_value":12.9
+        "weight_kg":0.62
     },
     "Health and Medicine":{
-        "weight_value":7.0
+        "weight_kg":0.81
     },
     "Home":{
-        "weight_value":7.7
+        "weight_kg":3.49
     },
     "Home Improvement":{
-        "weight_value":8.3
+        "weight_kg":3.77
     },
     "Household Essentials":{
-        "weight_value":2.3
+        "weight_kg":1.04
     },
     "Patio & Garden":{
-        "weight_value":72.2
+        "weight_kg":32.75
     },
     "Personal Care":{
-        "weight_value":1.0
+        "weight_kg":0.12
     },
     "Pets":{
-        "weight_value":5.7
+        "weight_kg":0.69
     },
     "Sports & Outdoors":{
-        "weight_value":0.4
+        "weight_kg":0.2
     },
     "Toys":{
-        "weight_value":2.8
+        "weight_kg":0.21
     }
 }

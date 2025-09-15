@@ -5,14 +5,14 @@
         "size_h":7.9
     },
     "Beauty":{
-        "size_l":5.0,
-        "size_w":6.2,
-        "size_h":12.1
+        "size_l":5.5,
+        "size_w":6.8,
+        "size_h":12.6
     },
     "Clothing":{
-        "size_l":7.4,
-        "size_w":6.2,
-        "size_h":3.6
+        "size_l":10.6,
+        "size_w":9.2,
+        "size_h":6.3
     },
     "Collectibles":{
         "size_l":7.0,
