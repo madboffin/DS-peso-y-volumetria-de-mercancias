@@ -1,11 +1,12 @@
 """Feature engineering module for product weight and volume prediction."""
 
 import json
-from pathlib import Path
-from typing import Dict, Tuple
 
-import numpy as np
 import pandas as pd
+import numpy as np
+import spacy
+
+nlp = spacy.load("en_core_web_md")
 
 
 def safe_parse(x) -> dict | None:
@@ -103,7 +104,7 @@ def extract_weights(df: pd.DataFrame) -> pd.DataFrame:
     return weights.reset_index()
 
 
-def calculate_mean_metrics(df: pd.DataFrame) -> Tuple[Dict, Dict]:
+def calculate_mean_metrics(df: pd.DataFrame) -> tuple[dict, dict]:
     """Calculate mean weights and volumes by category."""
     mean_volumes = (
         df.groupby(["root_category_name"])
@@ -131,7 +132,7 @@ def calculate_mean_metrics(df: pd.DataFrame) -> Tuple[Dict, Dict]:
 
 
 def fill_missing_values(
-    df: pd.DataFrame, mean_weights: Dict, mean_volumes: Dict
+    df: pd.DataFrame, mean_weights: dict, mean_volumes: dict
 ) -> pd.DataFrame:
     """Fill missing values using category means."""
 
@@ -188,3 +189,22 @@ def process_features(df: pd.DataFrame) -> pd.DataFrame:
     df = fill_missing_values(df, mean_weights, mean_volumes)
 
     return df
+
+
+def get_text_features(texts: list[str], batch_size: int = 1000) -> np.ndarray:
+    """Convert texts to spaCy vectors.
+
+    Args:
+        texts: List of text strings to process
+        batch_size: Number of texts to process at once
+
+    Returns:
+        Array of text vectors
+    """
+    vectors = []
+    for doc in nlp.pipe(texts, batch_size=batch_size):
+        if doc.has_vector:
+            vectors.append(doc.vector)
+        else:
+            vectors.append(np.zeros(nlp.vocab.vectors.shape[1]))
+    return np.array(vectors)

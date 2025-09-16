@@ -1,8 +1,7 @@
 """Model prediction module."""
 
-import joblib
-
 from pathlib import Path
+import joblib
 
 import pandas as pd
 

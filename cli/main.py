@@ -5,21 +5,16 @@ import sys
 
 import pandas as pd
 
-from src.data import feature_engineering as fe
+from src.preprocessing import feature_engineering as fe
 from src.models.predictor import ProductPredictor
 
 
 def preprocess_data(input_path: Path, output_dir: Path):
     """Preprocess raw data and save results."""
     try:
-        # Read input data
         dtypes = {"sku": str, "gtin": str}
         df = pd.read_csv(input_path, dtype=dtypes)
-
-        # Process features
-        df_processed = fe.process_features(df)
-
-        return df_processed
+        return fe.process_features(df)
 
     except Exception as e:
         print(f"Error processing data: {e}", file=sys.stderr)
@@ -62,19 +57,13 @@ def setup_cli_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def predict(df, output_path: Path) -> int:
+def predict(df):
     """Make predictions on new data."""
     try:
         # Load model and make predictions
         model_dir = Path().cwd() / "models" / "trained_models"
-        print(model_dir)
         predictor = ProductPredictor(model_dir)
-        df_with_predictions = predictor.predict(df)
-
-        # Save predictions
-        # output_path.parent.mkdir(parents=True, exist_ok=True)
-        # df_with_predictions.to_csv(output_path, index=False, sep="|")
-        return 0
+        return predictor.predict(df)
 
     except Exception as e:
         print(f"Error making predictions: {e}", file=sys.stderr)
@@ -96,7 +85,7 @@ def main(argv: Optional[list] = None) -> int:
             output_dir.mkdir(parents=True, exist_ok=True)
             processed_data_dir = Path("../data/processed")
             df = preprocess_data(args.input, processed_data_dir)
-            predict(df, args.output)
+            predictions = predict(df)
             return 0
         except Exception as e:
             print(f"Error processing data: {e}")

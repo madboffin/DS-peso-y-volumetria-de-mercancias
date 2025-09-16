@@ -6,7 +6,7 @@ RUN pip install -r requirements.txt && \
     python -m spacy download en_core_web_md
 
 COPY . .
-# RUN pip install -e .
+RUN pip install -e .
 
 EXPOSE 8000
 CMD ["python", "cli/main.py"]
