@@ -36,11 +36,17 @@ A continuación, se detallan las principales estrategias consideradas como **pos
 
 
 # Como ejecutar el proyecto
+
+Se espera la ubicacion del archivo de entrada, y la del archivo de salida.
 ## Para hacer predicciones:
-docker-compose run --rm product-predictor python cli/main.py predict \
-  --input /app/data/raw/new_products.csv \
-  --output /app/data/processed/predictions.csv
+
+`docker-compose up --build`
+
+`docker-compose run --rm product-predictor python cli/main.py predict --input /app/data/raw/new_products.csv --output /app/data/processed/predictions.csv`
 
 ## Modo interactivo:
-docker-compose run --rm product-predictor bash
+`docker-compose run --rm product-predictor bash`
 
+Para correr el proyecto sin usar docker:
+
+`python -m cli.main predict -i /data/raw/market_products.csv -o /data/processed/predictions.csv`
