@@ -2,6 +2,8 @@
 
 from pathlib import Path
 import joblib
+import numpy as np
+import spacy
 
 import pandas as pd
 
@@ -15,6 +17,8 @@ class ProductPredictor:
         """
         self.model_dir = Path(model_dir)
         self.models = {}
+        self.nlp = spacy.load("en_core_web_md")
+        self.nlp.disable_pipes("parser", "ner")
         self._load_models()
 
     def _load_models(self):
@@ -43,5 +47,30 @@ class ProductPredictor:
         if not self.models:
             raise ValueError("No models loaded. Check model directory.")
 
-        # TODO implement
-        return None
+        # Create a copy to avoid modifying input
+        df_out = df.copy()
+
+        # Generate embeddings for product names
+        df_out["product_name_vector"] = df_out["product_name"].apply(
+            lambda x: self.nlp(x).vector
+        )
+        vectors = np.stack(df_out["product_name_vector"].values)
+
+        # Predict weight if missing
+        weight_mask = df_out["weight_kg"].isna()
+        if weight_mask.any() and "weight" in self.models:
+            weight_pred = self.models["weight"].predict(vectors[weight_mask])
+            df_out.loc[weight_mask, "weight_kg_predicted"] = weight_pred
+
+        # Predict dimensions if missing
+        size_mask = df_out[["size_l", "size_w", "size_h"]].isna().all(axis=1)
+        if size_mask.any():
+            for dim in ["size_l", "size_w", "size_h"]:
+                if dim in self.models:
+                    dim_pred = self.models[dim].predict(vectors[size_mask])
+                    df_out.loc[size_mask, f"{dim}_predicted"] = dim_pred
+
+        # Drop the vector column as it's no longer needed
+        df_out.drop(columns=["product_name_vector"], inplace=True)
+
+        return df_out

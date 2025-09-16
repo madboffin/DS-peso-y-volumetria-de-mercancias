@@ -9,7 +9,7 @@ from src.preprocessing import feature_engineering as fe
 from src.models.predictor import ProductPredictor
 
 
-def preprocess_data(input_path: Path, output_dir: Path):
+def preprocess_data(input_path: Path):
     """Preprocess raw data and save results."""
     try:
         dtypes = {"sku": str, "gtin": str}
@@ -60,14 +60,14 @@ def setup_cli_parser() -> argparse.ArgumentParser:
 def predict(df):
     """Make predictions on new data."""
     try:
-        # Load model and make predictions
+        # Load models
         model_dir = Path().cwd() / "models" / "trained_models"
         predictor = ProductPredictor(model_dir)
         return predictor.predict(df)
 
     except Exception as e:
         print(f"Error making predictions: {e}", file=sys.stderr)
-        return 1
+        return None
 
 
 def main(argv: Optional[list] = None) -> int:
@@ -83,9 +83,10 @@ def main(argv: Optional[list] = None) -> int:
         try:
             output_dir = args.output.parent
             output_dir.mkdir(parents=True, exist_ok=True)
-            processed_data_dir = Path("../data/processed")
-            df = preprocess_data(args.input, processed_data_dir)
+            df = preprocess_data(args.input)
             predictions = predict(df)
+            predictions.to_csv(args.output, index=False, sep="|")
+            print("Predictions at:", args.output)
             return 0
         except Exception as e:
             print(f"Error processing data: {e}")
