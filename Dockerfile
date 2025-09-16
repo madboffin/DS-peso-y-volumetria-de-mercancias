@@ -2,7 +2,8 @@ FROM python:3.13-slim
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && \
+    python -m spacy download en_core_web_md
 
 COPY . .
 # RUN pip install -e .
