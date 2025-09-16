@@ -6,9 +6,10 @@ import sys
 import pandas as pd
 
 from src.data import feature_engineering as fe
+from src.models.predictor import ProductPredictor
 
 
-def preprocess_data(input_path: Path, output_dir: Path) -> int:
+def preprocess_data(input_path: Path, output_dir: Path):
     """Preprocess raw data and save results."""
     try:
         # Read input data
@@ -18,14 +19,7 @@ def preprocess_data(input_path: Path, output_dir: Path) -> int:
         # Process features
         df_processed = fe.process_features(df)
 
-        # Save results
-        output_dir.mkdir(parents=True, exist_ok=True)
-
-        # Save processed dataframe
-        output_file = output_dir / "processed_data.csv"
-        df_processed.to_csv(output_file, index=False, sep="|")
-
-        return 0
+        return df_processed
 
     except Exception as e:
         print(f"Error processing data: {e}", file=sys.stderr)
@@ -68,11 +62,18 @@ def setup_cli_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def predict(input_path: Path, output_path: Path) -> int:
+def predict(df, output_path: Path) -> int:
     """Make predictions on new data."""
     try:
-        # TODO: Implement prediction logic
-        print("Prediction functionality not yet implemented")
+        # Load model and make predictions
+        model_dir = Path().cwd() / "models" / "trained_models"
+        print(model_dir)
+        predictor = ProductPredictor(model_dir)
+        df_with_predictions = predictor.predict(df)
+
+        # Save predictions
+        # output_path.parent.mkdir(parents=True, exist_ok=True)
+        # df_with_predictions.to_csv(output_path, index=False, sep="|")
         return 0
 
     except Exception as e:
@@ -93,9 +94,9 @@ def main(argv: Optional[list] = None) -> int:
         try:
             output_dir = args.output.parent
             output_dir.mkdir(parents=True, exist_ok=True)
-            processed_data_dir = "../data/processed"
-            preprocess_data(args.input, processed_data_dir)
-            predict(args.input, args.output)
+            processed_data_dir = Path("../data/processed")
+            df = preprocess_data(args.input, processed_data_dir)
+            predict(df, args.output)
             return 0
         except Exception as e:
             print(f"Error processing data: {e}")
